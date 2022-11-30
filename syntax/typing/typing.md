@@ -156,4 +156,4 @@ Here's a small puzzle for you. The typing of this overloaded function is actuall
 ```
 x = rounder(1.2,0)
 ```
-mypy thinks x should be a float, but it's actually an integer! You can see this in Vs code by copy-pasting the functions into a code editor and hovering over x to view its type. I want you to leaf through <a href=https://docs.python.org/3/library/typing.html#special-typing-primitives>this page</a> and try to fix this on your own. My solution used just one extra overload.
+mypy thinks x should be a float, but it's actually an integer! You can see this in Vs code by copy-pasting the functions into a code editor and hovering over x to view its type. I want you to leaf through <a href=https://docs.python.org/3/library/typing.html#special-typing-primitives>this page</a> and try to fix this on your own. My solution used just one extra overload. Here's a hint: the order of the overloads matters!
