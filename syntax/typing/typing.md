@@ -146,7 +146,7 @@ def rounder(x: float, digits: int = 0)->int|float:
     ...
 ```
 There are a few rules you need to keep in mind when using overloads. <br/>
-Number one: Python ignores them, because of course it does. They are for humans and IDE's only. <br/>
+Number one: Python ignores them. They are for humans and IDE's only. <br/>
 Number two: The *last* declaration is the one Python will use. <br/>
 Number three: if python tries to call a function with @typing.overload over it, it will crash. <br/>
 Adding type hints to the last declaration will have no effect on the type checker outside the function, but I prefer to do it anyway for consistency's sake.
