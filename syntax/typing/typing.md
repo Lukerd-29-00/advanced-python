@@ -56,7 +56,7 @@ something("1",2)
 Python wouldn't object. If you're using a decent code editor like VSCODE, it'll warn you with Mypy, but Python won't do that on its own.
 
 # Custom types
-Type hints can be any primitive type, like int or str, but they can also be any kind of Python class, including ones that you write. Sometimes, because Python's typing system is *great*, it likes to complain sometimes for no good reason. For example, if you do this:
+Type hints can be any primitive type, like int or str, but they can also be any kind of Python class, including ones that you write. However, I should give you fair warning. If you try to use a class as a type in one of its own methods, Python will complain for some reason. For example, if you do this:
 ```
 class test():
     def method(self)->test:
@@ -66,7 +66,7 @@ Python will refuse to run the program. When this happens, do this instead:
 class test():
     def method(self)->"test"
 ```
-and the problem will stop. Honestly, it's not a terrible idea to always wrap your hints in quotes. You might be wondering why Python crashes at an """undefined""" type if it ignores them. Me too. Anyway...
+and the problem will stop. Honestly, it's not a terrible idea to always wrap your hints in quotes. You might be wondering why Python crashes at an "undefined" type if it ignores them. Me too. Anyway...
 
 # More advanced types
 Python's typing module contains some more advanced types, like lists and sets. They look like this:
@@ -75,7 +75,7 @@ import typing
 
 def listSomething(argument1: int, argument2: str)->typing.List[int]
 ```
-See the square brackets after List? That's called a *type parameter*. In this case, it indicates that the output is not just a list of anything you want, but specifically a list of integers. In most programming languages, this is done with the '\<' and '\>' symbols, but Python decided to break that mold, for no apparent reason. 
+See the square brackets after List? That's called a *type parameter*. In this case, it indicates that the output is not just a list of anything you want, but specifically a list of integers. In pretty much any other programming language, this is done with the '\<' and '\>' symbols.
 
 ## Union types
 the typing module has a very useful type called typing.Union. It allows the input to be one of several types. Let's use it to add type hints to our normalize function from eariler:
