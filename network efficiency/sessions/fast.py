@@ -33,20 +33,6 @@ def timer():
     print(session.pokemon)
     return session.total_downloaded, time.time() - start
 
-@typing.overload
-def rounder(x: float)->int:
-    pass
-@typing.overload
-def rounder(x: float, digits: typing.Literal[0])->int:
-    pass
-@typing.overload
-def rounder(x: float, digits: int)->float:
-    pass
-def rounder(x: float, digits: int = 0)->int|float:
-    pass
-
-x = rounder(1.2,1)
-
 if __name__ == "__main__":
     total_downloaded, elapsed = timer()
     print(f"Time elapsed: {elapsed}")
