@@ -42,14 +42,14 @@ async def cook():
     #Cook the borgers
 
 async def main():
-    brocolli_future = steam_broccoli()
+    brocolli_coroutine = steam_broccoli()
     get_pan()
     get_plates()
     get_buns()
     set_pan_on_burner()
     put_patties_on_pan()
     await cook()
-    await brocolli_future
+    await brocolli_coroutine
 
 if __name__ == "__main__":
     asyncio.run(main())
