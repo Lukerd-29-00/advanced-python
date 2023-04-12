@@ -55,7 +55,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 ## The async keyword
-So let's break down what this is doing. We can see that the functions main, cook, and steam_brocolli use a different kind of function signature. The async keyword indiciates that a function is asynchronous, meaning it does not need to be completed before proceeidng. If I were to translate it into English, it would be something like this: "You don't have to start this right now, but I want this done at some point." 
+So let's break down what this is doing. We can see that the functions main, cook, and steam_brocolli use a different kind of function signature. The async keyword indiciates that a function is asynchronous, meaning it does not need to be completed before proceeding. If I were to translate it into English, it would be something like this: "You don't have to start this right now, but I want this done at some point." 
 
 ## The await keyword
 On the last line, we see the new "await" keyword. What does that mean? It means that the program cannot proceed until this function is actually finished. However, it does <i>not</i> mean that this has to be done next. The program could decide to steam the broccoli first. If I were to translate await into English, it would say something like this: "You need to do this before we can move on. It's going to take awhile, so feel free to work on something else while it's running". Think back to the real-world example for a moment. If you were doing this in real life, you would probably start cooking the patties, then put the brocolli into the steamer and stick it in the microwave while the burgers are still cooking. 
