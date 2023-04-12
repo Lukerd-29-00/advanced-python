@@ -8,7 +8,7 @@ def grab_mon(id: int):
     global TOTAL_LENGTH
     res = requests.get(URL.format(id=id))
     if res.ok:
-        TOTAL_LENGTH += int(res.headers["Content-Length"])
+        TOTAL_LENGTH += len(res.content)
         return res.json()
     else:
         res.raise_for_status()

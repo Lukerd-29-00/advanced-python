@@ -16,7 +16,7 @@ class PokemonSession(requests.Session):
     def _download(self, id: int):
         res = self.get(URL.format(id=id))
         if res.ok:
-            self.total_downloaded += int(res.headers["Content-Length"])
+            self.total_downloaded += len(res.content)
             return res.json()
         else:
             res.raise_for_status()
