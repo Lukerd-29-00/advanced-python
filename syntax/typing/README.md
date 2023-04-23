@@ -12,14 +12,14 @@ type(2)
 ```
 ## isinstance
 isinstance is a built-in function in Python. It's purpose is fairly simple; it checks whether it's first argument is an *instance* of the second. for example: 
-```
+```python
 isinstance(2,int)
 True
 isinstance("2",int)
 False
 ```
 This allows you to do something like this:
-```
+```python
 def normalize(string):
     if isinstance(string,str)
         return string
@@ -32,7 +32,7 @@ type(b'1')
 type(normalize('1'))
 <class 'str'>
 type(normalize(b'1'))
-<class 'bytes'>
+<class 'str'>
 ```
     
 # Basic type hint syntax
