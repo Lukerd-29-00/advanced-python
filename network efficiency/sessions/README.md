@@ -2,7 +2,7 @@
 Today we're going to learn how to do network requests a bit more efficiently in Python.
 
 ## Test
-The first thing I want you to do is a quick experiment. download and run slow.py and fast.py.
+The first thing I want you to do is a quick experiment. download and run slow.py and fast.py. They will take probably 10-20 seconds max.
 
 ### Results
 You probably noticed that the download speed in slow.py is, well, slow. I got about 60 KB/s. However, if you run fast.py, you should notice a marked speed increase. I got about 150 KB/s, which is almost triple the speed!
