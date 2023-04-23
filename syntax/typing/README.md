@@ -37,12 +37,12 @@ type(normalize(b'1'))
     
 # Basic type hint syntax
 Type hint syntax is pretty simple. When you write a function like this:
-```
+```python
 def something(argument1, argument2):
     ...
 ```
 The type hints would look something like this:
-```
+```python
 def something(argument1: int, argment2: str)->int:
     ...
 ```
@@ -50,19 +50,19 @@ This indicates that argument1 should be an integer, argument2 should be a string
 
 ## Caveat
 One thing to note about type hints is that Python itself pretty much completely ignores them. If you were to call the function above like this:
-```
+```python
 something("1",2)
 ```
 Python wouldn't object. If you're using a decent code editor like VSCODE, it'll warn you with Mypy, but Python won't do that on its own.
 
 # Custom types
 Type hints can be any primitive type, like int or str, but they can also be any kind of Python class, including ones that you write. However, I should give you fair warning. If you try to use a class as a type in one of its own methods, Python will complain for some reason. For example, if you do this:
-```
+```python
 class test():
     def method(self)->test:
 ```
 Python will refuse to run the program. When this happens, do this instead:
-```
+```python
 class test():
     def method(self)->"test"
 ```
@@ -70,7 +70,7 @@ and the problem will stop. Honestly, it's not a terrible idea to always wrap you
 
 # More advanced types
 Python's typing module contains some more advanced types, like lists and sets. They look like this:
-```
+```python
 import typing
 
 def listSomething(argument1: int, argument2: str)->typing.List[int]
@@ -79,12 +79,12 @@ See the square brackets after List? That's called a *type parameter*. In this ca
 
 ## Union types
 the typing module has a very useful type called typing.Union. It allows the input to be one of several types. Let's use it to add type hints to our normalize function from eariler:
-```
+```python
 def normalize(string: typing.Union[str,bytes])->str:
     ...
 ```
 In 3.10 and above, you could also do this:
-```
+```python
 def normalize(string: str|bytes)->str:
     ...
 ```
@@ -94,7 +94,7 @@ Note that these generic types *will not work with isinstance!* Furthermore, type
 
 # Type variables
 Now that you know about generic types, you're ready for type variables. Let's say we have a function that does division, and it returns a float if the parameters are floats, or ints if they are integers. How would we express that with type hints? here's how:
-```
+```python
 import typing
 T = typing.TypeVar("T")
 def some_math(param1: T, param2: T)->T:
@@ -105,14 +105,14 @@ This type variable takes on the type of the parameters (we're implicitly assumin
 
 ## Basic constraints
  We can also put constraints on what values T can be:
-```
+```python
 T = typing.TypeVar("T",int,float)
 ```
 Now T must be either type int or type float.
 
 ## (Slightly) more advanced constraints
 Take these two classes:
-```
+```python
 class Test():
     x: int
 
@@ -120,20 +120,20 @@ class Tester(Test):
     y: int
 ```
 If you were to do this:
-```
+```python
 T = typing.TypeVar("T",Test)
 def test(t: T)->T:
     ...
 test(Tester())
 ```
 this is considered invalid, because the type of Tester() does not exactly match Test. You'd want this instead:
-```
+```python
 T = typing.TypeVar("T",bound=Test)
 ```
 
 # Overloads
 Remember these from C++? Turns out python has them too. Sort of. Not really. Here's an example. Suppose we have a function called rounder, that takes an optional parameter digits. If digits is not supplied, it returns an integer. If it is, it returns a float rounded to that number of digits. With what we've learned so far, it is not possible to correctly type this function. You need overloads to do this:
-```
+```python
 import typing
 
 @typing.overload
@@ -153,7 +153,7 @@ Adding type hints to the last declaration will have no effect on the type checke
 
 ## Challenge
 Here's a small puzzle for you. The typing of this overloaded function is actually not *quite* right. If you do this:
-```
+```python
 x = rounder(1.2,0)
 ```
 mypy thinks x should be a float, but it's actually an integer! You can see this in Vs code by copy-pasting the functions into a code editor and hovering over x to view its type. I want you to leaf through <a href=https://docs.python.org/3/library/typing.html#special-typing-primitives>this page</a> and try to fix this on your own. My solution used just one extra overload. Here's a hint: the order of the overloads matters!
