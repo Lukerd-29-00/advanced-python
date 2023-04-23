@@ -6,7 +6,7 @@ Python is a dynamically typed language, which means that the type of a variable 
 
 ## type
 type() is a function that gets the type of an object. For example:
-```
+```python
 type(2)
 <class 'int'>
 ```
